@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WatchDogs.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PathToLastFilesInQueue" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\WatchDogs\Properties\LastFilesInQueue.txt</Value>
+    </Setting>
+    <Setting Name="PathToBackupsDirsFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\WatchDogs\Properties\BackupsDirectories.txt</Value>
+    </Setting>
+    <Setting Name="PathToListFiles" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\WatchDogs\Properties\ListFiles.txt</Value>
+    </Setting>
+    <Setting Name="PathToExceptDirs" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\WatchDogs\Properties\ExceptDirs.txt</Value>
+    </Setting>
+    <Setting Name="AllBackupsPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\WatchDogs\Back-ups</Value>
+    </Setting>
+    <Setting Name="CopyDirectoryBool" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="WatchDogsProperties" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\WatchDogs\Properties</Value>
+    </Setting>
+    <Setting Name="NumberOfDaysOfFilesExistence" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">180</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
