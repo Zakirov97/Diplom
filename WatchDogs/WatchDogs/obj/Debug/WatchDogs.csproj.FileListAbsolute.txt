@@ -1,9 +1,0 @@
-C:\Users\Закиров Диас\source\repos\WatchDogs\WatchDogs\bin\Debug\WatchDogs.exe.config
-C:\Users\Закиров Диас\source\repos\WatchDogs\WatchDogs\bin\Debug\WatchDogs.exe
-C:\Users\Закиров Диас\source\repos\WatchDogs\WatchDogs\bin\Debug\WatchDogs.pdb
-C:\Users\Закиров Диас\source\repos\WatchDogs\WatchDogs\bin\Debug\Mono.Options.dll
-C:\Users\Закиров Диас\source\repos\WatchDogs\WatchDogs\obj\Debug\WatchDogs.csprojAssemblyReference.cache
-C:\Users\Закиров Диас\source\repos\WatchDogs\WatchDogs\obj\Debug\WatchDogs.csproj.CoreCompileInputs.cache
-C:\Users\Закиров Диас\source\repos\WatchDogs\WatchDogs\obj\Debug\WatchDogs.csproj.CopyComplete
-C:\Users\Закиров Диас\source\repos\WatchDogs\WatchDogs\obj\Debug\WatchDogs.exe
-C:\Users\Закиров Диас\source\repos\WatchDogs\WatchDogs\obj\Debug\WatchDogs.pdb
