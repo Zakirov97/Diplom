@@ -56,7 +56,7 @@ def get_match_by_id():
 
 async def get_last_match_id(obs_name):
     try:
-        client = await callofduty.Login("dias.zakirov97@mail.ru", "w0xihu4nshuiji40")
+        client = await callofduty.Login("login", "password")
         player = await client.GetPlayer(Platform.BattleNet, obs_name)
         matchID = (await player.matches(Title.ModernWarfare, Mode.Warzone, limit=1))[0]
         return matchID.id
@@ -66,7 +66,7 @@ async def get_last_match_id(obs_name):
 
 async def get_full_match(matchID):
     try:
-        client = await callofduty.Login("dias.zakirov97@mail.ru", "w0xihu4nshuiji40")
+        client = await callofduty.Login("login", "password")
         match = await client.GetFullMatch(Platform.BattleNet, Title.ModernWarfare, Mode.Warzone, matchID)
 
         all_players = match['allPlayers']
