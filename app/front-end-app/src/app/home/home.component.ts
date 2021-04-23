@@ -43,10 +43,12 @@ export class HomeComponent implements OnInit {
   }
 
   private first(name: string, tag: string): Observable<any> {
-    return this.http.get<any>(`https://cod-mw-wz-api.herokuapp.com/getmatchidbyname?obsname=${name}&obstag=${tag}`)
+    //return this.http.get<any>(`https://cod-mw-wz-api.herokuapp.com/getmatchidbyname?obsname=${name}&obstag=${tag}`)
+    return this.http.get<any>(`https://delovoy.herokuapp.com/getmatchidbyname?obsname=${name}&obstag=${tag}`)
   }
   private second(id: string): Observable<any> {
-    return this.http.get<any>(`https://cod-mw-wz-api.herokuapp.com/getmatchbyid?matchid=${id}`);
+    //return this.http.get<any>(`https://cod-mw-wz-api.herokuapp.com/getmatchbyid?matchid=${id}`);
+    return this.http.get<any>(`https://delovoy.herokuapp.com/getmatchbyid?matchid=${id}`);
   }
 
 }

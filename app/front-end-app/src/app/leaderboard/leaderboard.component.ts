@@ -123,9 +123,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class LeaderboardComponent implements OnInit {
   obsName = [
-    //{ "name": 'chitozu', "tag": 2110 },
-    //{ "name": 'UAPLAYER', "tag": 1672 },
-    { "name": 'ShleporezKa', "tag": 2324 }
+    { "name": 'smile', "tag": 23824 },
+    //{ "name": 'chitozu', "tag": 2367 },
+    //{ "name": 'warzone123Pl', "tag": 2182 }
+    //{ "name": 'ShleporezKa', "tag": 2324 }
   ]
 
   dataSource = ELEMENT_DATA;
@@ -168,8 +169,7 @@ export class LeaderboardComponent implements OnInit {
             }
             else if (resFindMatchId.flag == 1) {
               //Создаём обращение в базу данных
-              this.codAPI.getMatch(matchID)
-                .subscribe(match => {
+              this.codAPI.getMatch(matchID).subscribe(match => {
                   console.log(match);
                   this.matchData = match['match']['teams'].map(team => {
                     let players: TeamsInfo["players"] = team['players'].map(player => {
@@ -189,33 +189,69 @@ export class LeaderboardComponent implements OnInit {
                       players: players
                     }
                   });
-
-                  
-                })
+              })
             }
             else if (resFindMatchId.flag == 2) {
-              this.codAPI.addMatchId(matchID)
-                .subscribe(data2 => {
+              this.codAPI.addMatchId(matchID).subscribe(data2 => {
                   if (!data2.success) {
                     console.log(data2.msg);
                   } else {
                     console.log(data2.msg);
+                    this.codAPI.getFullMatchById(matchID).subscribe(match => {
+                      this.codAPI.addMatchToDB(match).subscribe(resAddMatch => {
+                        if (resAddMatch.flag == 0) {
+                          console.log(resAddMatch.msg);
+                          
+                          this.matchData = match['match']['teams'].map(team => {
+                            let players: TeamsInfo["players"] = team['players'].map(player => {
+                              return {
+                                userName: player['userName'].toString(),
+                                kills: Number.parseInt(player['kills']),
+                                damageDone: Number.parseInt(player['damageDone']),
+                                damageTaken: Number.parseInt(player['damageTaken'])
+                              }
+                            });
+        
+                            return {
+                              teamName: team['teamName'],
+                              teamPlacement: team['teamPlacement'],
+                              teamKills: team['teamKills'],
+                              points: team['points'],
+                              players: players
+                            }
+                          });
+      
+                        }
+                        else if (resAddMatch.flag == 1) {
+                          console.log(resAddMatch.msg);
+      
+                          this.matchData = match['match']['teams'].map(team => {
+                            let players: TeamsInfo["players"] = team['players'].map(player => {
+                              return {
+                                userName: player['userName'].toString(),
+                                kills: Number.parseInt(player['kills']),
+                                damageDone: Number.parseInt(player['damageDone']),
+                                damageTaken: Number.parseInt(player['damageTaken'])
+                              }
+                            });
+        
+                            return {
+                              teamName: team['teamName'],
+                              teamPlacement: team['teamPlacement'],
+                              teamKills: team['teamKills'],
+                              points: team['points'],
+                              players: players
+                            }
+                          });
+      
+                        }
+                      });
+      
+                    });
                   }
-                })
-              this.codAPI.getFullMatchById(matchID).subscribe(match => {
-                this.codAPI.addMatchToDB(match).subscribe(resAddMatch => {
-                  if (resAddMatch.flag == 0) {
-                    console.log(resAddMatch.msg);
-                  }
-                  else if (resAddMatch.flag == 1) {
-                    console.log(resAddMatch.msg);
-                  }
-                });
-
-              });
+              })
             }
           });
-
         })
     }
   }

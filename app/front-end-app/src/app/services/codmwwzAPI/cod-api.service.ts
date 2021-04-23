@@ -16,15 +16,16 @@ export class CodAPIService {
   constructor(private http: HttpClient) { }
 
   getLastMatchIdByName(name: string, tag: number): Observable<any> {
-    return this.http.get<any>(`https://cod-mw-wz-api.herokuapp.com/getmatchidbyname?obsname=${name}&obstag=${tag}`);
+    //return this.http.get<any>(`https://cod-mw-wz-api.herokuapp.com/getmatchidbyname?obsname=${name}&obstag=${tag}`);
+    return this.http.get<any>(`https://delovoy.herokuapp.com/getmatchidbyname?obsname=${name}&obstag=${tag}`);
   }
 
   findMatchId(matchID: any) {
     let headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json;');
     let res = this.http.post<any>(
-      //'leaderboard/reg',
-      'http://localhost:3000/leaderboard/findMatchId',
+      'leaderboard/findMatchId',
+      //'http://localhost:3000/leaderboard/findMatchId',
       matchID,
       { headers: headers }).pipe(map(res => res));
     console.log(res);
@@ -36,8 +37,8 @@ export class CodAPIService {
     headers.set('Content-Type', 'application/json;');
     //headers.append('Content-Type', 'application/json');
     let res = this.http.post<any>(
-      //'leaderboard/reg',
-      'http://localhost:3000/leaderboard/addMatchId',
+      'leaderboard/addMatchId',
+      //'http://localhost:3000/leaderboard/addMatchId',
       matchID,
       { headers: headers }).pipe(map(res => res));
     console.log(res);
@@ -46,15 +47,16 @@ export class CodAPIService {
 
 
   getFullMatchById(matchID: any): Observable<any> {
-    return this.http.get<any>(`https://cod-mw-wz-api.herokuapp.com/getmatchbyid?matchid=${matchID['matchID']}`);
+    //return this.http.get<any>(`https://cod-mw-wz-api.herokuapp.com/getmatchbyid?matchid=${matchID['matchID']}`);
+    return this.http.get<any>(`https://delovoy.herokuapp.com/getmatchbyid?matchid=${matchID['matchID']}`);
   }
 
   addMatchToDB(match: any){
     let headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json;');
     let res = this.http.post<any>(
-      //'leaderboard/reg',
-      'http://localhost:3000/leaderboard/addMatchToDB',
+      'leaderboard/addMatchToDB',
+      //'http://localhost:3000/leaderboard/addMatchToDB',
       match,
       { headers: headers }).pipe(map(res => res));
     console.log(res);
@@ -65,8 +67,8 @@ export class CodAPIService {
     let headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json;');
     let res = this.http.post<any>(
-      //'leaderboard/reg',
-      'http://localhost:3000/leaderboard/getMatch',
+      'leaderboard/getMatch',
+      //'http://localhost:3000/leaderboard/getMatch',
       matchID,
       { headers: headers }).pipe(map(res => res));
     console.log(res);
@@ -109,10 +111,10 @@ export class CodAPIService {
   addMatchIdByName(name: string, tag: number) {
     return this.getLastMatchIdByName(name, tag).pipe(
       switchMap(matchID => {
-        //return this.addMatchId(matchID['matchID']);
-        let res = this.addMatchId('111111111322222222222');
-        console.log(res);
-        return res;
+        return this.addMatchId(matchID['matchID']);
+        //let res = this.addMatchId('111111111322222222222');
+        //console.log(res);
+        //return res;
       })
     )
   }
@@ -121,8 +123,8 @@ export class CodAPIService {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http.post(
-      //'leaderboard/reg',
-      'http://localhost:3000/leaderboard/lb',
+      'leaderboard/lb',
+      //'http://localhost:3000/leaderboard/lb',
       teams,
       { headers: headers });
   }
