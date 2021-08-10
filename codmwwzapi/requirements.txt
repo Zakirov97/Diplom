@@ -1,5 +1,0 @@
-flask
-gunicorn
-httpx
-aiohttp
-flask_cors
